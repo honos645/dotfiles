@@ -1,5 +1,5 @@
-if [ -f ~/.bash_function ]; then
-	source ~/.bash_function
+if [ -d ~/.bin ]; then
+	source ~/.bin/*
 fi
 
 alias dir='dir --color=auto'
