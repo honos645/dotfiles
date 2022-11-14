@@ -10,6 +10,8 @@ set noerrorbells
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932,iso-2022-jp,sjis
 set fileformats=unix,dos,mac
+set shellslash
+set formatoptions+=m
 
 
 "========= 保存関係 ========="
@@ -68,6 +70,7 @@ set wrapscan
 set incsearch
 set hlsearch
 set pumheight=5
+set complete+=k
 
 
 "=== インデント関係 ==="
