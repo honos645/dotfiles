@@ -1,11 +1,10 @@
 REMOVE_TARGETS += bash-clean
-DOT_TARGETS += 
+DOT_TARGETS +=
+BASH_TARGETS += $(HOME)/.bashrc $(HOME)/.bash_profile
 
-.PHONY: bash-install
-bash-install:
-	@echo $(DOT_TARGETS)
-	@echo $(DOT_TARGETS)
+bash-install: init
+	. $(HOME)/.bash_profile
 
 .PHONY: bash-clean
 bash-clean:
-	@echo "bash-clean"
+	rm -rf .bashrc .bash_profile

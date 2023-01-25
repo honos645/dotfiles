@@ -2,6 +2,9 @@
 "           .vimrc           "
 """"""""""""""""""""""""""""""
 
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 set nocompatible
 set vb t_vb = 
 set noerrorbells
@@ -101,13 +104,13 @@ nnoremap J L
 nnoremap K H
 nnoremap L $
 
+nnoremap <C-a> <Home>
+nnoremap <C-e> <End>
+
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-
-nnoremap <C-a> <Home>
-nnoremap <C-e> <End>
 
 " コピー＆ペースト関係
 nnoremap Y y$
@@ -124,11 +127,18 @@ vnoremap > >gv
 vnoremap < <gv
 nnoremap > >>
 nnoremap < <<
+nnoremap =<CR> ==
+nnoremap == mkgg=G'k
 
 " インクリメント＆デクリメント
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" ターミナル関係
+tnoremap <Esc> <C-w>N
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-y> <C-w>""
+tnoremap q<CR> <C-w><C-c>
 
 augroup vimrcEx
     au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |

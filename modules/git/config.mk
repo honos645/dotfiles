@@ -1,12 +1,10 @@
-GIT_DIR = $(HOME)
-
 INSTALL_TARGETS += git-install
+REMOVE_TARGETS += git-clean
 
-.PHONY: git-install
-git-install:
-	touch $(HOME)/.gitconfig.local
-	echo -e "[user]\n\tname = \n\temail = " >> $(HOME)/.gitconfig.local
+git-install: init
+	@touch $(HOME)/.gitconfig.local
+	@echo -e "[user]\n\tname = \n\temail = " >> $(HOME)/.gitconfig.local
 
 .PHONY: git-clean
 git-clean:
-
+	@rm -rf $(HOME)/.gitconfig
