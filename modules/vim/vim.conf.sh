@@ -1,30 +1,17 @@
 #!/bin/bash
 
-TARGETS=$(find ${MODULE_DIR}/vim/ -name dot.*)
+[[ -n "${_COMMON}" ]] || source ../../src/install/common.sh 2> /dev/null && readonly _VIMCONF=1
 
 function vim-install () {
-	for TARGET in ${TARGETS}
-	  do
-		local target=$(basename ${TARGET} | sed -e 's/dot//g')
-		if [ -e ${HOME}/${target} ] || [ -d ${HOME}/${target} ]; then
-			command . ${SOURCE_DIR}/install/backup.sh ${target}
-		fi
-		command ln -sf ${TARGET} ${HOME}/${target}
-	done
-}
+    [[ -z "${_VIMCONF}" ]] && command find $(pwd) -maxdepth 1 -name "dot.*" -exec bash -c 'ln -snf ${0} ~/`basename ${0} | sed -e "s/dot//g"`' {} \; && return
 
-function vim-clean () {
-	for TARGET in ${TARGETS}
-	do
-		local target=$(basename ${TARGET} | sed -e 's/dot//g')
-		if [ -L ${HOME}/${target} ]; then
-			command rm -f ${HOME}/${target}
-		fi
-	done
-}
+    TARGETS=$(find `readlink -f ./modules/vim/` -maxdepth 1 -name "dot.*")
 
-if "${INSTALL}"; then
-	vim-install	
-elif "${CLEAN}"; then
-	vim-clean
-fi
+    for target in ${TARGETS}
+    do
+    target_path=${target//dot/}
+
+    backup ${target_path}
+    command ln -sf ${target} ~/$(basename ${target_path})
+    done
+}
