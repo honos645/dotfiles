@@ -1,22 +1,27 @@
 #!/bin/bash
 
-readonly _COMMON=1
+[[ -n "${_COMMON}" ]] || source "$(dirname ${0})/lib/init.sh" && readonly _COMMON=1
 
 function has () {
     command type $1 > /dev/null 2>&1
 }
 
 function create_backup () {
-    command mkdir -p ~/.dotfiles.backup
+    command ln -snf ${TOP_DIR}/ ${HOME}/.dotfiles
+    command mkdir -p ${HOME}/.dotfiles.backup
 }
 
 function backup () {
-    [[ $# -eq 0 ]] && return 
-    [[ -d ~/.dotfiles.backup ]] || create_backup
+    [[ $# -eq "0" ]] && return
+    [[ -d "${HOME}/${BACKUP_DIR}" ]] || create_backup
 
-    backup_target=$(basename ${1})
-    [[ -e "~/${backup_target}" ]] || return
-    diff ${backup_target} ~/${backup_target}gc > /dev/null 2>&1 && [[ -L "${backup_target}" ]] && return
-    command cp -rdunf ~/${backup_target}gc ~/.dotfiles.backup/$(readlink -f ${1} | sed -e 's/\//!/g')
+    local target=${1}
+    command echo ${target}
+
+    [[ -e "${target}" ]] || return
+    #command diff ${target} ${HOME}/${target} > /dev/null 2>&1 && [[ -L "${target}" ]] && return
+
+    command cp -rdunf ${target} ${HOME}/.dotfiles.backup/$(readlink -f ${1} | sed -e 's/\//!/g')
+    command echo "cp -rdunf ${target} ${HOME}/.dotfiles.backup/$(readlink -f ${1} | sed -e 's/\//!/g')"
 
 }
