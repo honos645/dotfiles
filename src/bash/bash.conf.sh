@@ -1,32 +1,18 @@
 #!/bin/bash
 
-TARGETS=$(find ${SOURCE_DIR}/bash/ -name dot.* && find ${SOURCE_DIR}/shell/ -name dot.*)
+[[ -n "${_COMMON}" ]] || source "${HOME}/.dotfiles/lib/common.sh" 2> "/dev/null" && readonly _BASHCONF=1
 
 function bash-install () {
-	for TARGET in ${TARGETS}
-	do
-		local target=$(basename ${TARGET} | sed -e 's/dot//g')
-		if [ -e ${target} ] || [ -d ${target} ]; then
-			command . ${SOURCE_DIR}/install/backup.sh ${target} 
-		fi
-        command echo "${TARGET} ${HOME}/${target}"
-		command ln -sf ${TARGET} ${HOME}/${target}
-	done
-	. ${HOME}/.bashrc
-}
+    [[ -z "${_BASHCONF}" ]] && command find $(pwd) -maxdepth 1 -name "dot.*" -exec bash -c 'ln -snf ${0} ${HOME}/`basename ${0} | sed -e "s/dot//g"`' {} \; && command source "${HOME}/.bash_profile" && return
 
-function bash-clean () {
-	for TARGET in ${TARGETS}
-	do
-		local target=$(basename ${TARGET} | sed -e 's/dot//g')
-		if [ -L ${HOME}/${target} ]; then
-			command rm -f ${HOME}/${target}
-		fi
-	done
-}
+    local TARGETS=$(find `readlink -f ${HOME}/.dotfiles/src/bash/` -maxdepth 1 -name "dot.*")
 
-if "${INSTALL}"; then
-	bash-install
-elif "${CLEAN}"; then
-	bash-clean
-fi
+    for target in ${TARGETS}; do
+        local target_path=${target//dot/}
+
+        backup "${target_path}"
+        command ln -snf "${target}" "${HOME}/$(basename ${target_path})"
+    done
+
+    command source "${HOME}/.bash_profile"
+}

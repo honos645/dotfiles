@@ -11,33 +11,33 @@ shopt -s checkwinsize
 
 shopt -s globstar &> /dev/null
 
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x "/usr/bin/lesspipe" ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-	. /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-    elif [ -f /etc/bash_completion.d/git-prompt ]; then
-	. /etc/bash_completion.d/git-prompt
-    fi
+  if [ -f "/usr/share/bash-completion/bash_completion" ]; then
+    source "/usr/share/bash-completion/bash_completion"
+  elif [ -f "/etc/bash_completion" ]; then
+    source "/etc/bash_completion"
+  elif [ -f "/etc/bash_completion.d/git-prompt" ]; then
+    source "/etc/bash_completion.d/git-prompt"
+  fi
 fi
 
 export PATH=$HOME/.local/bin:$PATH
 
 if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-    . "/usr/local/etc/profile.d/bash_completion.sh"
+    source "/usr/local/etc/profile.d/bash_completion.sh"
 elif [[ -r "/etc/profile.d/bash_completion.sh" ]]; then
-    . "/etc/profile.d/bash_completion.sh"
+    source "/etc/profile.d/bash_completion.sh"
 fi
 
 # git completion
-if [ -f $HOME/.git-completion.bash ]; then
-    . ~/.git-completion.bash
+if [ -f "$HOME/.git-completion.bash" ]; then
+    source "$HOME/.git-completion.bash"
 fi
 # git prompt
-if [ -f $HOME/.git-prompt.sh ]; then
-    . ~/.git-prompt.sh
+if [ -f "$HOME/.git-prompt.sh" ]; then
+    source "$HOME/.git-prompt.sh"
 fi
 
 # Language
@@ -55,7 +55,7 @@ GIT_PS1_SHOWSTASHSTATE=true
 # upstream より遅れている場合は「＜」で示す
 GIT_PS1_SHOWUPSTREAM=auto
 
-#Color definitions
+# Color definitions
 WHITE="\[\e[0m\]"
 CREAM_YELLOW="\[\e[33m\]"
 YELLOW="\[\e[0;33m\]"
@@ -69,19 +69,6 @@ MAGENTA="\[\e[0;35m\]"
 
 export PS1="[\t] ${GREEN}\u@\h${WHITE}:${PALE_BLUE}\w${CREAM_YELLOW}\$(__git_ps1 ' (%s)')${WHITE}\n\$ "
 
-if [ -d $HOME/.dotfiles ]; then
-    . $HOME/.dotfiles/src/bash/aliases
+if [ -d "$HOME/.dotfiles" ]; then
+    source "$HOME/.dotfiles/src/bash/aliases.sh"
 fi
-
-if [ -d $HOME/.dotfiles ]; then
-    . $HOME/.dotfiles/src/bash/function
-fi
-
-function start_pro6_docker() {
-    sudo service docker start
-    cd /mnt/c/Users/sosuk/OneDrive/university/ltr_2022/prg_プログラミング演習6/
-    make up && sleep 1
-}
-alias s_pro6=start_pro6_docker
-alias d_pro6='make -C /mnt/c/Users/sosuk/OneDrive/university/ltr_2022/prg_プログラミング演習6 down'
-alias intern='/mnt/c/Users/sosuk/OneDrive/university/ltr_2022/prg_プログラミング演習6/internship-client-1.1/intern 127.0.0.1 10000'

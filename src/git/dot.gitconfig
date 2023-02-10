@@ -1,0 +1,26 @@
+[include]
+	path = ~/.gitconfig.local
+[alias]
+	graph = log --graph --pretty=format:'%C(GREEN)[%cd]%Creset - %C(ul yellow)%h %Creset: %s %C(auto)%d%Creset' --date=format:'%y-%m-%d' --decorate=short
+	lol = log --pretty=format:'%C(GREEN)[%cd]%Creset - %C(ul yellow)%h %Creset: %s %C(auto)%d%Creset' --date=format:'%Y-%m-%d' --decorate=short
+	ss = status
+	st = status
+	df = diff
+[core]
+	editor = vim
+	quotepath = false
+	autocrlf = false
+	ignorecase = false
+[credential]
+	helper = store
+[pull]
+	rebase = false
+	ff = only
+[push]
+	default = current
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[fetch]
+	prune = true
