@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias dotfiles='cd $HOME/.dotfiles'
 
 alias dir='dir --color=auto'

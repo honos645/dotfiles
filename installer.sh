@@ -1,10 +1,18 @@
 #!/bin/bash
 
-type git > /dev/null 2>&1 && git clone https://github.com/honos645/dotfiles
-
-#type git > /dev/null 2>&1 && curl -OL https://github.com/honos645/dotfiles/archive/refs/heads/main.zip
+if type git > /dev/null 2>&1; then
+    git clone https://github.com/honos645/dotfiles
+elif type curl > /dev/null 2>&1; then
+    command curl -OL https://github.com/honos645/dotfiles/archive/refs/heads/main.tar.gz
+    command tar xvf main.tar.gz -C dotfiles
+    command rm -rf main.tar.gz
+else
+    echo "ERROR download failure"
+fi
 
 command cd ./dotfiles
+
+[[ -n "${_COMMON}" ]] || source lib/common.sh
 
 CONFIG=$(find . -type f -name "*.conf.sh")
 
