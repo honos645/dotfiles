@@ -1,11 +1,12 @@
 #!/bin/bash
 
 function open() {
-  if [ "$#" != 1 ]; then
-    pwsh.exe .
-  elif [ -e "$1" ]; then
-    pwsh.exe /c start $(wslpath -w $1) 2> /dev/null
-  else
-    echo "open: $1 Np such file or directory"
-  fi
+    if [ "$#" != 1 ]; then
+        pwsh.exe /c start $(wslpath -w $(pwd)) 2> /dev/null
+    elif [ -e "$1" ]; then
+        pwsh.exe /c start $(wslpath -w $1) 2> /dev/null
+    else
+        echo "open: $1 Np such file or directory"
+    fi
 }
+open $@

@@ -48,3 +48,4 @@ function topdf () {
     echo "convert error"
   fi
 }
+topdf $@

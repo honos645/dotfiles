@@ -1,14 +1,14 @@
 #!/bin/bash
 
 function backup () {
-    if [ -e ${HOME}/${1} ]; then
-        command mkdir -p ${BACKUP_DIR}/
+    [[ $# -eq "0" ]] && return
+    [[ -d "${HOME}/${BACKUP_DIR}" ]] || create_backup
 
-        if [ $(ls -t ${TOP_BACKUP_DIR} | head -n 2 | wc -l) -eq 2 ]; then
-            command cp -rud ${TOP_BACKUP_DIR}/$(ls -t ${TOP_BACKUP_DIR} | head -n 2 | sort | head -n 1)/ ${BACKUP_DIR}
-        fi
-        command cp -ruf ${HOME}/${1} ${BACKUP_DIR}/$(echo ${HOME}/${1} | sed -e 's/\//!/g')
-    fi
+    local target=${1}
+    command echo ${target}
+
+    [[ -e "${target}" ]] || return
+    #command diff ${target} ${HOME}/${target} > /dev/null 2>&1 && [[ -L "${target}" ]] && return
+
+    command cp -rdunf ${target} ${HOME}/.dotfiles.backup/$(readlink -f ${1} | sed -e 's/\//!/g')
 }
-
-backup $1

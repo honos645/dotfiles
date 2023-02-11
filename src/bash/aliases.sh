@@ -1,15 +1,4 @@
-if [ -d "~/.bin" ]; then
-    source "~/.bin/*"
-fi
-
-if [ -d "${HOME}/.dotfiles" ]; then
-    TARGET=$(find -L ${HOME}/.dotfiles/bin -type f)
-    for target in ${TARGET}; do
-	command source "${target}"
-        target=$(basename ${target}) 
-        command alias ${target}="${target}"
-    done
-fi
+alias dotfiles='cd $HOME/.dotfiles'
 
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -36,5 +25,4 @@ alias gmv='git mv '
 alias grm='git rm'
 alias gls='git status'
 alias bat='batcat'
-
 

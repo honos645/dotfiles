@@ -71,4 +71,5 @@ export PS1="[\t] ${GREEN}\u@\h${WHITE}:${PALE_BLUE}\w${CREAM_YELLOW}\$(__git_ps1
 
 if [ -d "$HOME/.dotfiles" ]; then
     source "$HOME/.dotfiles/src/bash/aliases.sh"
+    export PATH=$HOME/.dotfiles/bin:$PATH
 fi

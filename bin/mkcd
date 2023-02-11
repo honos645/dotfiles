@@ -4,3 +4,4 @@ function mkcd() {
   command mkdir -p $1
   command cd $1
 }
+mkcd $@
