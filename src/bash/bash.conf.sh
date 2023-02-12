@@ -4,7 +4,7 @@
 
 function bash-install () {
 
-    command has bash || return
+    has bash || return
 
     local TARGETS=$(find `readlink -f ${HOME}/.dotfiles/src/bash/` -maxdepth 1 -name "dot.*")
 
