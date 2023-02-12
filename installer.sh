@@ -24,6 +24,6 @@ CONFIG=$(find . -type f -name "*.conf.sh")
 
 for config in ${CONFIG}; do
     command source ${config}
-    command $(basename ${config} .conf.sh)-install
+    $(basename ${config} .conf.sh)-install
 done
 
