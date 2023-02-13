@@ -2,6 +2,8 @@
 
 [[ -n "${_COMMON}" ]] || source ./lib/common.sh
 
+cd ${TOP_DIR}
+
 TARGETS=$(find . -type f -name "*.conf.sh")
 
 for target in ${TARGETS}; do
@@ -11,6 +13,6 @@ done
 
 command rm -rf ${HOME}/.dotfiles
 
-#command rm -rf ${TOP_DIR}
+command rm -rf ${TOP_DIR}
 
 command echo "uninstalled dotfiles"
