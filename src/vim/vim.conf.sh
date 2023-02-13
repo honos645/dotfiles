@@ -16,11 +16,7 @@ function vim-install () {
 }
 
 function vim-uninstall () {
-    local TARGETS=$(find `readlink -f ${HOME}/.dotfiles/src/vim/` -maxdepth 1 -name "dot.*")
+    has vim || return
 
-    for target in ${TARGETS}; do
-        local target_name=$(basename ${target//dot./.})
-
-        restore ${target_name}
-    done
+    dotunlink vim
 }

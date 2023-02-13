@@ -11,6 +11,6 @@ done
 
 command rm -rf ${HOME}/.dotfiles
 
-command rm -rf ${TOP_DIR}
+#command rm -rf ${TOP_DIR}
 
 command echo "uninstalled dotfiles"
