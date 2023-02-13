@@ -6,7 +6,7 @@ TOP_BACKUP_DIR=${HOME}/.dotfiles.backup
 
 # link dotfiles directory
 if [ ! -L ${HOME}/.dotfiles ]; then
-  command ln -f ${TOP_DIR}/ ${HOME}/.dotfiles
+  command ln -sf ${TOP_DIR}/ ${HOME}/.dotfiles
 fi
 
 # create backup directory
