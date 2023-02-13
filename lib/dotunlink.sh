@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function dotunlink () {
+    has $1 || return
+
     local TARGETS=$(find  $(readlink -f ${HOME}/.dotfiles/src/$1/) -maxdepth 1 -name "dot.*")
 
     for TARGET in ${TARGETS}; do
