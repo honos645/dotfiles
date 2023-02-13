@@ -11,8 +11,7 @@ for target in ${TARGETS}; do
     $(basename ${target} .conf.sh)-uninstall
 done
 
+command rm -rf $(readlink -f ${HOME}/.dotfiles)
 command rm -rf ${HOME}/.dotfiles
-
-command rm -rf ${TOP_DIR}
 
 command echo "uninstalled dotfiles"
