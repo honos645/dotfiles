@@ -12,6 +12,6 @@ for target in ${TARGETS}; do
 done
 
 command rm -rf $(readlink -f ${HOME}/.dotfiles)
-command rm -rf ${HOME}/.dotfiles
+command rm -rf ${HOME}/.dotfiles ${HOME}/.dotfiles.backup
 
 command echo "uninstalled dotfiles"
