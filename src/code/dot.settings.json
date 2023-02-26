@@ -1,0 +1,335 @@
+{
+    "dotfiles.repository": "https://github.com/honos645/dotfiles.git",
+    "dotfiles.targetPath": "~/dotfiles",
+    "dotfiles.installCommand": "~/dotfiles/install.sh",
+    "code-runner.runInTerminal": true, //code-runnerで標準入力を許可
+    "debug.inlineValues":"on", //デバッグ中に行内に変数を表示
+    "editor.bracketPairColorization.enabled": true, //対応する括弧を彩色
+    "editor.cursorStyle": "block",
+    "editor.formatOnPaste": false, //貼り付け時自動フォーマット
+    "editor.formatOnSave": false, //保存時自動フォーマット
+    "editor.guides.bracketPairs": true, //対応する括弧を強調
+    "editor.minimap.maxColumn": 120, //ミニマップ最大幅
+    "editor.minimap.showSlider": "always", //ミニマップのスライダー表示
+    "editor.renderControlCharacters": true, //制御文字の表示
+    "editor.renderLineHighlight": "gutter", //現在行を強調表示
+    "editor.renderWhitespace": "all", //空白文字の表示
+    "editor.showFoldingControls": "always", //折りたたみ記号の表示方法
+    "editor.suggestSelection": "recentlyUsedByPrefix", //選択候補の選択方法
+    "editor.tabSize": 2, //タブサイズ
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`?。．、，”’（）「」『』［］【】＜＞｛｝《》てにをはがのともへでや ", //区切り文字
+    "editor.wordWrap": "off", //行の折り返し表示
+    "explorer.incrementalNaming": "smart", //名前重複の名前規則
+    "files.autoGuessEncoding": true, //自動エンコーディング
+    "files.exclude": { //ファイル一覧から非表示にする拡張子
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**.aux":true,
+        "**.dvi":true,
+        "**.synctex.gz": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "files.eol": "auto", //改行コードの規定値
+    "files.insertFinalNewline": false, //ファイルの末尾に改行を不許可
+    "files.trimFinalNewlines": true, //ファイルの末尾の余分な改行の削除を不許可
+    "files.trimTrailingWhitespace": true, //ファイル末尾の空白のトリミングを不許可
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt", //ビルド時特定ファイル削除
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false, //保存時自動コンパイルでファイル削除を停止
+    "latex-workshop.latex.autoBuild.run": "never", //保存時自動コンパイルを停止
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.synctex(busy)",
+        "*.synctex.gz(busy)",
+        "*.nav",
+        "*.vrb"
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "platex",
+            "tools": [
+                "platex",
+                "platex",
+                "dvipdfmx"
+            ]
+        },
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex",
+                "lualatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "wsl.exe",
+            "args": [
+                "lualatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%.tex"
+            ]
+        },
+        {
+            "name": "platex",
+            "command": "wsl.exe",
+            "args": [
+                "platex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-kanji=utf8",
+                "-guess-input-enc",
+                "%DOCFILE%.tex"
+            ]
+        },
+        {
+            "name": "dvipdfmx",
+            "command": "wsl.exe",
+            "args": [
+                "dvipdfmx",
+                "-f",
+                "yu-win10.map",
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab", //latexのpdf表示時のデフォルト設定
+    "terminal.integrated.copyOnSelection": true, //ターミナルで範囲選択でコピー
+    "terminal.integrated.defaultProfile.windows": "ubuntu20.04 (WSL)", //デフォルトで実行されるターミナル
+    "workbench.editor.tabSizing": "shrink", //エディターのタブサイズの大きさ．よくわからん
+    "workbench.editor.untitled.hint": "hidden", //新規ファイルでhintを消す
+    "workbench.iconTheme": "eq-material-theme-icons-light", //ファイルアイコンテーマ
+    "workbench.colorTheme": "Material Theme", //起動時に開くファイル
+    "[python]":{
+        "editor.tabSize": 4,
+        "editor.formatOnType": true
+    },
+    "[tex]": {
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
+    "[latex]":{
+        "editor.wordWrap": "on", //行の折り返し
+        "editor.insertSpaces": true, //tabで\tでなくスペースを入力するか
+        "editor.detectIndentation": false, //よくわかんない
+        "editor.suggestSelection": "recentlyUsedByPrefix", //補完について？
+        "editor.suggest.snippetsPreventQuickSuggestions": false, //よくわからん
+        "editor.unicodeHighlight.invisibleCharacters": true, //全角空白を強調?
+        "editor.unicodeHighlight.allowedCharacters": {
+            "，":true,
+            "．":true,
+            "、":true,
+            "。":true,
+        }
+    },
+    "[bibtex]": {
+        "editor.suggest.snippetsPreventQuickSuggestions": false //よくわからん
+    },
+    "[tsv]": {
+        "editor.insertSpaces": false
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false, //ターミナルに貼り付け時警告を非表示
+    "backgroundPhiColors.activeScope": "window", //エディタハイライトはすべてのエディタで有効
+    "workbench.startupEditor": "readme", //起動時に表示するファイルはreadme
+    "todo-tree.highlights.defaultHighlight": {
+        "gutterIcon": true
+    },
+    "todo-tree.general.tags": [
+        "BUG:",
+        "HACK:",
+        "FIXME:",
+        "FixMe:",
+        "Fixme:",
+        "TODO:",
+        "ToDo:",
+        "Todo",
+        "XXX:",
+        "[ ]:",
+        "[x]:",
+        "NOTE:",
+        "Note:",
+        "CHECK:",
+        "Check:",
+    ],
+    "todo-tree.general.tagGroups": {
+        "TODO":[
+            "TODO:",
+            "ToDo:",
+            "Todo"
+        ],
+        "FIXME":[
+            "FIXME:",
+            "FixMe:",
+            "Fixme:",
+        ],
+        "NOTE":[
+            "NOTE:",
+            "Note:",
+        ],
+        "CHECK":[
+            "CHECK:",
+            "Check:",
+        ]
+
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check-circle-fill",
+            "foreground": "#ffa500",
+            "iconColour": "#ffa500"
+        },
+        "FIXME": {
+            "icon": "flame",
+            "foreground": "#ffff00",
+            "iconColour": "#ffff00"
+        },
+        "NOTE": {
+            "icon": "paintbrush",
+            "foreground": "#00bfff",
+            "iconColour": "#00bfff",
+        },
+        "CHECK": {
+            "icon": "plus-circle",
+            "foreground": "#008000",
+            "iconColour": "#008000"
+        }
+    },
+
+    "better-comments.tags": [
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "TODO:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#ffa500",
+        },
+        {
+            "tag": "Todo:",
+            "color": "#ffa500",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "ToDo:",
+            "color": "#ffa500",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "FIXME:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#ffff00",
+        },
+        {
+            "tag": "Fixme:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#ffff00",
+        },
+        {
+            "tag": "FixMe:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#ffff00",
+        },
+        {
+            "tag": "CHECK:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#008000",
+        },
+        {
+            "tag": "Check:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#008000",
+        },
+        {
+            "tag": "NOTE:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#00bfff",
+        },
+        {
+            "tag": "Note:",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#00bfff",
+        },
+        {
+            "tag": "WARNING",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "red",
+        },
+        {
+            "tag": "BUG",
+            "strikethrough": false,
+            "backgroundColor": "transparent",
+            "color": "#2C7CFF",
+        }
+    ],
+    "editor.formatOnType": true,
+    "r.rterm.windows": "Z:\\usr\\bin\\R",
+    "C_Cpp.clang_format_style": "{BasedOnStyle: Google}",
+    "editor.accessibilitySupport": "off"
+}

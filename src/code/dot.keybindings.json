@@ -1,0 +1,28 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
+[
+    {
+        "key": "ctrl+alt+b",
+        "command": "latex-workshop.recipes",
+        "when": "editorLangId == latex"
+    },
+    {
+        "key": "ctrl+t t",
+        "command": "workbench.action.openWorkspace"
+    },
+    {
+        "key": "ctrl+s s",
+        "command": "workbench.action.files.saveAs"
+    },
+    {
+        "key": "ctrl+shift+s",
+        "command": "-workbench.action.files.saveAs"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "-workbench.action.files.save"
+    }
+]
