@@ -21,9 +21,13 @@ alias egrep='egrep --color=auto'
 alias python='python3'
 alias pip='pip3'
 
-alias g='git'
 alias gmv='git mv'
 alias grm='git rm'
 alias gls='git status'
+
 alias bat='batcat'
 
+
+alias mkcd='. mkcd'
+alias open='. open'
+alias topdf='. topdf'
