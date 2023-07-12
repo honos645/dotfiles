@@ -14,4 +14,6 @@ done
 command rm -rf $(readlink -f ${HOME}/.dotfiles)
 command rm -rf ${HOME}/.dotfiles ${HOME}/.dotfiles.backup
 
+command rm -f ~/.local/bin/dotfile-ctl
+
 command echo "uninstalled dotfiles"
